@@ -1,0 +1,76 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+
+<style>
+  .form-container {
+    padding: 2em; /* Increase padding */
+    font-size: 1.2em; /* Larger text size */
+  }
+
+  h2 {
+    font-size: 2em; /* Larger heading */
+  }
+
+  .form-control {
+    font-size: 1.1em; /* Larger input text size */
+    padding: 1em; /* Larger input padding */
+  }
+
+  .btn {
+    font-size: 1.2em; /* Larger button text */
+    padding: 0.8em 1em; /* Larger button padding */
+  }
+
+  .nav-link {
+    font-size: 1.1em; /* Larger text in payment summary */
+  }
+</style>
+
+<br><br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8"> <!-- Increased width -->
+      <h2 class="text-center mb-4">Make a Payment</h2>
+
+      <form method="POST" action="{% url 'stk' %}" class="form-container bg-light rounded shadow-sm">
+        {% csrf_token %}
+
+        <!-- Phone Number Input -->
+        <div class="form-group">
+          <label for="phone" class="control-label">Phone Number:</label>
+          <input
+            type="number"
+            id="phone"
+            name="phone"
+            class="form-control"
+            placeholder="Enter Phone Number"
+            value="254"
+            required>
+        </div>
+
+        <!-- Payment Details -->
+        <ul class="nav nav-pills nav-stacked my-4">
+          <li class="nav-item active">
+            <a href="#" class="nav-link bg-primary text-white">
+              <span class="badge badge-light float-right">{{ total }}</span>
+              Final Payment
+            </a>
+          </li>
+        </ul>
+        <!-- Hidden Input to Pass Total -->
+      <input type="hidden" name="total" value="{{ total }}">
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-success btn-block">Pay</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

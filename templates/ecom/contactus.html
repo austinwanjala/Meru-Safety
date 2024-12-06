@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Meru Safety Shop</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+
+<body style="background-color: lightgray;">
+
+  {% if request.user.is_authenticated %}
+    {% include "ecom/customer_navbar.html" %}
+  {% else %}
+    {% include "ecom/navbar.html" %}
+  {% endif %}
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <h3 class="alert alert-success text-center">contact Us!</h3>
+
+        <!-- Formspree contact form -->
+        <form id="contactForm" action="https://formspree.io/f/manwrqqy" method="POST" class="bg-light p-4 rounded shadow-sm">
+          
+          <!-- CSRF token for security -->
+          {% csrf_token %}
+          
+          <!-- Name field -->
+          <div class="form-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required class="form-control" placeholder="Enter your name">
+          </div>
+
+          <!-- Email field -->
+          <div class="form-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="_replyto" required class="form-control" placeholder="Enter your email">
+          </div>
+
+          <!-- Message field -->
+          <div class="form-group">
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" required class="form-control" rows="4" placeholder="Enter your message"></textarea>
+          </div>
+
+          <!-- Submit button -->
+          <div class="form-group text-center">
+            <input type="submit" value="Send Message" class="btn btn-primary btn-lg">
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% include "ecom/footer.html" %}
+
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  
+  <!-- JavaScript to handle redirection after successful submission -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        
+        // Send the form data using Fetch API
+        fetch("https://formspree.io/f/manwrqqy", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                // Redirect to the success page
+                window.location.href = "contactussuccess";
+            } else {
+                // Handle errors if submission fails
+                alert("There was an error sending your message. Please try again later.");
+            }
+        }).catch(error => {
+            // Handle network errors
+            alert("Oops! Something went wrong.");
+        });
+    });
+  </script>
+
+</body>
+</html>

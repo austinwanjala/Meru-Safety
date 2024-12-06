@@ -1,0 +1,283 @@
+<html>
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <title>Meru Safety Shop</title>
+
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #navbar {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .row1 {
+            padding-top: 10px;
+            padding-right: 50px;
+        }
+
+        .row2 {
+            padding-bottom: 20px;
+        }
+        .largenav .upper-links a.links {
+    color: white;  /* Set text color to white */
+    text-decoration: none;  /* Remove underline */
+    font-weight: normal;
+    transition: color 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+.largenav .upper-links a.links:hover {
+    color: #f39c12;  /* Change text color on hover to a golden color */
+}
+
+        .navbar-input {
+            padding: 11px 16px;
+            border-radius: 2px 0 0 2px;
+            border: 0 none;
+            outline: 0 none;
+            font-size: 15px;
+        }
+
+        .navbar-button {
+            background-color: #f39c12;
+            border: 1px solid #f39c12;
+            border-radius: 0 2px 2px 0;
+            color: white;
+            padding: 10px 0;
+            height: 43px;
+            cursor: pointer;
+        }
+
+        .cart-button {
+            background-color: #f39c12;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, .23), inset 1px 1px 0 rgba(255, 255, 255, .2);
+            padding: 10px 0;
+            text-align: center;
+            height: 41px;
+            border-radius: 2px;
+            font-weight: 500;
+            width: 120px;
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart-button:hover {
+            background-color: #e67e22;
+            cursor: pointer;
+        }
+
+        .cart-svg {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .item-number {
+            border-radius: 50%;
+            background-color: #e74c3c;
+            height: 20px;
+            padding: 3px 6px;
+            font-weight: 500;
+            display: inline-block;
+            color: white;
+            line-height: 12px;
+            margin-left: 10px;
+        }
+
+        .upper-links {
+            display: inline-block;
+            padding: 0 11px;
+            line-height: 23px;
+            font-size: 12px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-media-icons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-media-icons .fa {
+            font-size: 28px;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            margin: 10px;
+            display: inline-block;
+            border-radius: 50%;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-media-icons .fa:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .fa-facebook {
+            background-color: #3b5998;
+            color: white;
+        }
+
+        .fa-whatsapp {
+            background-color: #25d366;
+            color: white;
+        }
+
+        .fa-twitter {
+            background-color: #55acee;
+            color: white;
+        }
+
+        .fa-instagram {
+            background-color: #e4405f;
+            color: white;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+        }
+        /* Style the social media links */
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.social-links a {
+    color: white; /* Set text color to white */
+    font-size: 12px; /* Set the size of the icons */
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s;
+}
+/* Center the social links container */
+.social-container {
+    display: flex;           /* Enable Flexbox */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center;     /* Center the items vertically (if needed) */
+}
+
+/* Change the icon color on hover */
+.social-links a:hover {
+    color: #f39c12; /* Set color on hover (yellow) */
+}
+
+.social-links i {
+    margin-right: 8px; /* Add some space between the icon and text */
+}
+
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        @media screen and (min-width: 768px) {
+            .largenav {
+                display: block;
+            }
+
+            .smallnav {
+                display: none;
+            }
+
+            .smallsearch {
+                margin: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div class="container">
+            <div class="row row1">
+                <ul class="largenav pull-right">
+                    <li class="upper-links" ><a class="links" href="/afterlogin">Home</a></li>
+                    <li class="upper-links"><a class="links" href="/my-order">Track Orders</a></li>
+                    <li class="upper-links"><a class="links" href="/my-profile">Profile</a></li>
+                    <li class="upper-links"><a class="links" href="/contactus">Contact Us</a></li>
+                    <li class="upper-links"><a class="links" href="/aboutus">About Us</a></li>
+                    <form action="/logout" method="POST" style="display:inline;">
+                        {% csrf_token %} <!-- If CSRF protection is enabled in your Django settings -->
+                        <button type="submit" class="upper-links links" style="background: none; border: none; color: inherit; cursor: pointer;">
+                            Logout
+                        </button>
+                    </form>
+                    
+                    </form>
+                    
+                </ul>
+            </div>
+            <div class="row row2">
+                <div class="col-sm-3">
+                    <h2 style="margin:0px;"><a style="text-decoration:none; color:white;" href="/"><span class="largenav">Meru Safety Shop</span></a></h2>
+                </div>
+
+                <div class="navbar-search smallsearch col-sm-7 col-xs-11">
+                    <form action="/search" method="get">
+                        <div class="row">
+                            <input class="navbar-input col-xs-11" type="search" placeholder="Search for Products" name="query" id="query">
+                            <button class="navbar-button col-xs-1" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="cart1 largenav col-sm-2">
+                    <a class="cart-button" href="/cart">
+                        <svg class="cart-svg" width="16" height="16" viewBox="0 0 16 16">
+                            <path d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86" fill="#fff"></path>
+                        </svg> Cart <span class="item-number">{{ product_count_in_cart }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+    
+    <footer>
+      <div class="footer-content"></div>
+      <div class="social-container"></div>
+      <ul class="social-links pull-right">
+        <li><a href="https://facebook.com/Austin_KE" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+    </ul>
+    
+
+        <p>Meru Safety Shop Copyright &copy; 2024 Developed by Austine</p>
+    </footer>
+</body>
+</html>
